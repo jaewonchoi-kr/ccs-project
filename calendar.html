@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CEC Coding Society | Calendar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <a class="top-bar" href="index.html">
+        <div class="logo-mark">
+          <span class="logo-ring">CEC</span>
+        </div>
+        <div class="top-text">
+          <p class="school-name">Cobequid Educational Centre</p>
+          <p class="school-subtitle">Coding Society</p>
+        </div>
+      </a>
+
+      <header class="site-header">
+        <nav class="primary-nav">
+          <a href="index.html#welcome">Our Club</a>
+          <a href="index.html#news">News</a>
+          <a class="active" href="calendar.html">Calendar</a>
+          <a href="index.html#services">Support</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero calendar-hero">
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <p class="eyebrow">CEC Coding Society</p>
+            <h1>Club Calendar</h1>
+            <p class="lede">
+              See club meetups, build sessions, and competition prep in one place—no Google embed required.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+
+          <div class="calendar-frame custom-calendar">
+            <div class="cal-header">
+              <div class="cal-title">
+                <h2 id="cal-month">January</h2>
+                <span id="cal-year">2025</span>
+              </div>
+              <div class="cal-controls">
+                <button type="button" class="cal-btn" id="prev-month" aria-label="Previous month">◀</button>
+                <button type="button" class="cal-btn" id="next-month" aria-label="Next month">▶</button>
+                <button type="button" class="cal-btn" id="today-btn">Today</button>
+              </div>
+            </div>
+            <div class="cal-weekdays">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span
+              ><span>Sat</span>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-brand">
+          <div class="logo-mark small"><span class="logo-ring">CEC</span></div>
+          <div>
+            <p class="brand-name">Cobequid Educational Centre</p>
+            <p class="brand-tag">Cougar Coding Club</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#welcome">Home</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="index.html#news">News</a>
+          <a href="index.html#join">Join</a>
+        </div>
+        <p class="muted">Truro, Nova Scotia · Built in Cougar orange and navy</p>
+      </footer>
+    </div>
+
+    <script src="events.js"></script>
+    <script>
+      const events = window.events || [];
+      const recurring = window.recurring || [];
+
+      let current = new Date();
+
+      const monthEl = document.getElementById("cal-month");
+      const yearEl = document.getElementById("cal-year");
+      const gridEl = document.getElementById("cal-grid");
+      const prevBtn = document.getElementById("prev-month");
+      const nextBtn = document.getElementById("next-month");
+      const todayBtn = document.getElementById("today-btn");
+
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      function normalizeDate(d) {
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+
+      function withinRange(date, startStr, endStr) {
+        const start = normalizeDate(new Date(startStr));
+        const end = endStr ? normalizeDate(new Date(endStr)) : start;
+        return date >= start && date <= end;
+      }
+
+      function renderCalendar() {
+        const year = current.getFullYear();
+        const month = current.getMonth();
+
+        monthEl.textContent = monthNames[month];
+        yearEl.textContent = year;
+
+        const firstDay = new Date(year, month, 1);
+        const startDay = firstDay.getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        gridEl.innerHTML = "";
+
+        for (let i = 0; i < startDay; i++) {
+          const empty = document.createElement("div");
+          empty.className = "cal-cell empty";
+          gridEl.appendChild(empty);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cellDate = new Date(year, month, day);
+          const cell = document.createElement("div");
+          cell.className = "cal-cell";
+
+          const dayLabel = document.createElement("div");
+          dayLabel.className = "cal-day-number";
+          dayLabel.textContent = day;
+          cell.appendChild(dayLabel);
+
+          const todaysDate = normalizeDate(new Date());
+          if (normalizeDate(cellDate).getTime() === todaysDate.getTime()) {
+            cell.classList.add("today");
+          }
+
+          const dayEvents = events.filter((ev) => withinRange(cellDate, ev.start, ev.end));
+
+          // add recurring events if weekday matches and date is within range
+          recurring.forEach((rec) => {
+            const start = normalizeDate(new Date(rec.start));
+            const end = rec.end ? normalizeDate(new Date(rec.end)) : normalizeDate(new Date(rec.start));
+            if (cellDate >= start && cellDate <= end && cellDate.getDay() === rec.weekday) {
+              dayEvents.push({ title: rec.title, start: rec.start });
+            }
+          });
+          if (dayEvents.length) {
+            const list = document.createElement("div");
+            list.className = "cal-events";
+            dayEvents.forEach((ev) => {
+              const pill = document.createElement("div");
+              pill.className = "cal-event";
+              pill.textContent = ev.title;
+              list.appendChild(pill);
+            });
+            cell.appendChild(list);
+          }
+
+          gridEl.appendChild(cell);
+        }
+      }
+
+      prevBtn.addEventListener("click", () => {
+        current.setMonth(current.getMonth() - 1);
+        renderCalendar();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        current.setMonth(current.getMonth() + 1);
+        renderCalendar();
+      });
+
+      todayBtn.addEventListener("click", () => {
+        current = new Date();
+        renderCalendar();
+      });
+
+      renderCalendar();
+    </script>
+  </body>
+</html>
