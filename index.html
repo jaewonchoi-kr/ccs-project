@@ -1,50 +1,228 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <title>Promotional Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="main">
-			<div class="navbar">
-				<div class="icon">
-					<h2 class="logo">CCS</h2>
-				</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Cougar Coding Club | Cobequid Educational Centre</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-				<div class="menu">
-					<ul>
-						<li><a href="#">HOME</a></li>
-						<li><a href="#">ABOUT US</a></li>
-						<li><a href="#">PROJECTS</a></li>
-						<li><a href="#">JOIN US</a></li>
-					</ul>
-				</div>
+  <body>
+    <div class="page">
+      <a class="top-bar" href="index.html">
+        <div class="logo-mark">
+          <span class="logo-ring">CEC</span>
+        </div>
+        <div class="top-text">
+          <p class="school-name">Cobequid Educational Centre</p>
+          <p class="school-subtitle">Coding Society</p>
+        </div>
+      </a>
 
-				<div class="search">
-					<input class="srch" type="search" name="Type To text">
-					<a href="#"><button class="btn">Search</button></a>
-				</div>
+      <header class="site-header">
+        <nav class="primary-nav">
+          <a href="#welcome">Our Club</a>
+          <a href="#news">News</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="#services">Support</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
 
+      <section class="hero" id="welcome">
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <p class="eyebrow">CEC Coding Society</p>
+            <h1>Build, learn, and compete</h1>
+            <p class="lede">
+              From beginners to advanced coders, we meet weekly to design webs.
+            </p>
+            <div class="hero-actions">
+              <a class="pill primary" href="#join">Join the club</a>
+              <a class="pill ghost" href="calendar.html">View schedule</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-			</div>
-			<div class="content">
-				<h1>THINGS <br><span> ABOUT</span> <br>US:</h1>
-				<p class="par"><br><br>We are bunch of nerds from IB who are interested in Computer Science, <br>so we created this club for us to have a place to yap(that's not real). <br><br>CCS, stands for CEC Computing Society. <br>We learn fundamental coding, website developing and CS algorithmics. <br>We were first founded in February, 2025. <br>CCS is a student-led society where the leading chair-Jaewon Choi is the founder of this club,<br> accompanied with assisting chair-Jiarun Chen and attending member-Wesley Talor. <br>We show up in Mr.Crane's classroom weekly at lunch time to share, inpire and develop computing skills. <br>If you want to be part of us, click the 'JOIN US' button below!</p>
-				
-					<button class="cn"><a href="#">JOIN US</a></button>
+      <main>
+        <section class="section two-col">
+          <div class="column">
+            <h2>Welcome! Bienvenue! Pjila'si!</h2>
+            <p>
+              Cougar Coding Club is CEC's home for students who want to explore
+              programming, web design, robotics. We meet
+              in the Learning Commons every Wednesday lunch with diverse students.
+            </p>
+            <p>
+              Our goals are to introduce new coders, support course projects,
+              and showcase Cougar creativity through demos and competitions.
+              Bring curiosity—no experience required.
+            </p>
+          </div>
+          <aside class="column highlight" id="calendar">
+            <h3>Upcoming events</h3>
+            <div id="upcoming-list" class="events-list"></div>
+            <p class="muted" id="no-events" style="display: none;">No upcoming events in the next 90 days.</p>
+          </aside>
+        </section>
 
-					<div class="form">
-						<h2>Contact Info</h2>
-						<p class="par"><br>Mr.Crane's email...@gnspes.ca</p>
-					</div>
-  
-			</div>
- 
-	<div class="welcome">
-		<p><b>Welcome to <br> `~(*v*)~` CEC Computing Society!</b></p>
+        <section class="section cards" id="news">
+          <h2>Club highlights</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Weekly meetups</h3>
+              <p>
+                Collaborative build sessions with mentors and mini-lessons on
+                tools used across CEC courses.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Competition team</h3>
+              <p>
+                Train for regional programming contests and represent CEC in
+                Cougar colours.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Projects & showcases</h3>
+              <p>
+                Demo nights for games, websites, and robotics projects built by
+                members.
+              </p>
+            </article>
+          </div>
+        </section>
 
-	</div>
-	
-	</body>
-<html>
+        <section class="section two-col" id="services">
+          <div class="column">
+            <h2>Support for students</h2>
+            <ul class="bullet-list">
+              <li>Tutoring for programming courses</li>
+              <li>Portfolio and resume reviews</li>
+            </ul>
+          </div>
+        
+        </section>
+
+        <section class="section callout" id="join">
+          <div>
+            <h2>Join CEC Coding Society</h2>
+            <p>
+              Meet us Wednesdays lunch in Room 46
+            </p>
+          </div>
+          <div class="callout-actions">
+            <a class="pill primary" href="mailto:advisor@example.com">Email Mr. Crane</a>
+            <a class="pill ghost" href="#contact">Find us at school</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-brand">
+          <div class="logo-mark small"><span class="logo-ring">CEC</span></div>
+          <div>
+            <p class="brand-name">Cobequid Educational Centre</p>
+            <p class="brand-tag">Cougar Coding Club</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#welcome">Home</a>
+          <a href="#calendar">Calendar</a>
+          <a href="#news">News</a>
+          <a href="#join">Join</a>
+        </div>
+        <p class="muted">34 Lorne Street, Truro, NS B2N 3K3</p>
+        <p class="muted">Mr. Crane's Class | Room 46</p>
+      </footer>
+    </div>
+    <script src="events.js"></script>
+    <script>
+      const events = window.events || [];
+      const recurring = window.recurring || [];
+
+      const upcomingList = document.getElementById("upcoming-list");
+      const noEventsEl = document.getElementById("no-events");
+
+      function normalizeDate(d) {
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+
+      function addDays(date, days) {
+        const d = new Date(date);
+        d.setDate(d.getDate() + days);
+        return d;
+      }
+
+      function collectUpcoming(daysAhead = 90) {
+        const today = normalizeDate(new Date());
+        const horizon = addDays(today, daysAhead);
+        const results = [];
+
+        // One-off events
+        events.forEach((ev) => {
+          const start = normalizeDate(new Date(ev.start));
+          const end = ev.end ? normalizeDate(new Date(ev.end)) : start;
+          if (end >= today && start <= horizon) {
+            results.push({ title: ev.title, date: start });
+          }
+        });
+
+        // Recurring events
+        for (let i = 0; i <= daysAhead; i++) {
+          const date = addDays(today, i);
+          recurring.forEach((rec) => {
+            const start = normalizeDate(new Date(rec.start));
+            const end = rec.end ? normalizeDate(new Date(rec.end)) : start;
+            if (date >= start && date <= end && date.getDay() === rec.weekday) {
+              results.push({ title: rec.title, date });
+            }
+          });
+        }
+
+        results.sort((a, b) => a.date - b.date);
+        return results.slice(0, 3);
+      }
+
+      function formatDate(date) {
+        return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      }
+
+      function renderUpcoming() {
+        const upcoming = collectUpcoming(120);
+        if (!upcoming.length) {
+          noEventsEl.style.display = "block";
+          return;
+        }
+        upcoming.forEach((item) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "event";
+
+          const left = document.createElement("div");
+          const date = document.createElement("p");
+          date.className = "event-date";
+          date.textContent = formatDate(item.date);
+          const title = document.createElement("p");
+          title.className = "event-title";
+          title.textContent = item.title;
+          left.appendChild(date);
+          left.appendChild(title);
+
+          const time = document.createElement("span");
+          time.className = "event-time";
+          time.textContent = "All day";
+
+          wrapper.appendChild(left);
+          wrapper.appendChild(time);
+          upcomingList.appendChild(wrapper);
+        });
+      }
+
+      renderUpcoming();
+    </script>
+  </body>
+</html>
